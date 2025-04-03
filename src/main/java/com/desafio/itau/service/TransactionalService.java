@@ -17,5 +17,14 @@ public class TransactionalService {
         transactions.add(transaction);
     }
 
+    public void clearTransaction() {
+        transactions.clear();
+    }
 
+    public DoubleSummaryStatistics getStatistics() {
+        OffsetDateTime now = OffsetDateTime.now();
+        return transactions.stream()
+                .filter(t -> t.getDataHora().isAfter(now.minusSeconds(60))).mapToDouble(Transaction::getValor)
+                .summaryStatistics();
+    }
 }

@@ -4,6 +4,7 @@ import com.desafio.itau.dto.TransactionRequest;
 import com.desafio.itau.model.Transaction;
 import com.desafio.itau.service.TransactionalService;
 import jakarta.validation.Valid;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,5 +29,10 @@ public class TransctionController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @DeleteMapping()
+    public ResponseEntity<Void> clearTransactionals() {
+        service.clearTransaction();
+        return ResponseEntity.ok().build();
+    }
 
 }
