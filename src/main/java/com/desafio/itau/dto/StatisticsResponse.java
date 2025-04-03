@@ -3,7 +3,7 @@ package com.desafio.itau.dto;
 import lombok.Getter;
 
 import java.util.DoubleSummaryStatistics;
-@Getter
+
 public class StatisticsResponse {
     private long count;
     private double sum;
@@ -17,5 +17,19 @@ public class StatisticsResponse {
         this.max = statistics.getMax();
     }
 
+    public long getCount() {
+        return count;
+    }
 
+    public double getSum() {
+        return sum;
+    }
+
+    public double getMin() {
+        return min;
+    }
+
+    public double getMax() {
+        return max;
+    }
 }
