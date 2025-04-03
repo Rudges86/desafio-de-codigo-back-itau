@@ -21,4 +21,5 @@ public class StatisticsController {
     public ResponseEntity<StatisticsResponse> getStatistics() {
         return ResponseEntity.ok().body(new StatisticsResponse(service.getStatistics()));
     }
+
 }

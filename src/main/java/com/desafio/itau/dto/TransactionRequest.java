@@ -1,5 +1,6 @@
 package com.desafio.itau.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -22,5 +23,10 @@ public class TransactionRequest {
 
     public OffsetDateTime getDataHora() {
         return dataHora;
+    }
+
+    public TransactionRequest(double valor, OffsetDateTime dataHora) {
+        this.valor = valor;
+        this.dataHora = dataHora;
     }
 }
