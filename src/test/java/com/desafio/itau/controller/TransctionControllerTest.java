@@ -61,4 +61,14 @@ class TransctionControllerTest {
         verify(serviceMock, times(1)).clearTransaction();
     }
 
+    @Test
+    void testIncluirTransacaoFutura() throws Exception {
+        TransactionRequest request = new TransactionRequest(100, OffsetDateTime.now().plusHours(2));
+        mockMvc.perform(post("/transacao")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(request)))
+                .andExpect(status().isUnprocessableEntity());
+        verify(serviceMock, times(0)).addTransactional(any(Transaction.class));
+    }
+
 }

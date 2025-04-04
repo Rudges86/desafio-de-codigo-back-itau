@@ -1,7 +1,5 @@
 package com.desafio.itau.dto;
 
-import lombok.Getter;
-
 import java.util.DoubleSummaryStatistics;
 
 public class StatisticsResponse {

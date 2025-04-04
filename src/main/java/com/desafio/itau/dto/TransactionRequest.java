@@ -1,12 +1,7 @@
 package com.desafio.itau.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
-import lombok.Getter;
-
 
 import java.time.OffsetDateTime;
 
