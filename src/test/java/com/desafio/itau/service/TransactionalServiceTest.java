@@ -40,9 +40,9 @@ class TransactionalServiceTest {
         service.clearTransaction();
         verify(service, times(1)).clearTransaction();
 
-        when(service.getStatistics()).thenReturn(mockSum);
+        when(service.getStatistics(60L)).thenReturn(mockSum);
 
-        DoubleSummaryStatistics summaryStatistics = service.getStatistics();
+        DoubleSummaryStatistics summaryStatistics = service.getStatistics(60L);
 
         assertEquals(0.0,summaryStatistics.getSum());
         assertEquals(0,summaryStatistics.getCount());
@@ -55,9 +55,9 @@ class TransactionalServiceTest {
 
         DoubleSummaryStatistics mockStatus = new DoubleSummaryStatistics();
         mockStatus.accept(100.00);
-        when(service.getStatistics()).thenReturn(mockStatus);
+        when(service.getStatistics(60L)).thenReturn(mockStatus);
 
-        DoubleSummaryStatistics statistics = service.getStatistics();
+        DoubleSummaryStatistics statistics = service.getStatistics(60L);
         assertEquals(1,statistics.getCount());
         assertEquals(100.00,statistics.getSum());
     }

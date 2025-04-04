@@ -44,7 +44,7 @@ class StatisticsControllerTest {
     void getStatistics() throws  Exception {
         DoubleSummaryStatistics status = new DoubleSummaryStatistics();
         status.accept(500.0);
-        when(serviceMock.getStatistics()).thenReturn(status);
+        when(serviceMock.getStatistics(60L)).thenReturn(status);
 
         mockMvc.perform(get("/estatistica"))
                 .andExpect(status().isOk())

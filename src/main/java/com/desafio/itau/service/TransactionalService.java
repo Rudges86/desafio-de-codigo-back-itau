@@ -21,10 +21,10 @@ public class TransactionalService {
         transactions.clear();
     }
 
-    public DoubleSummaryStatistics getStatistics() {
+    public DoubleSummaryStatistics getStatistics(Long time) {
         OffsetDateTime now = OffsetDateTime.now();
         return transactions.stream()
-                .filter(t -> t.getDataHora().isAfter(now.minusSeconds(60)))
+                .filter(t -> t.getDataHora().isAfter(now.minusSeconds(time)))
                 .mapToDouble(Transaction::getValor)
                 .summaryStatistics();
     }

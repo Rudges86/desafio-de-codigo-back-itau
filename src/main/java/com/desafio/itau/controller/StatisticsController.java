@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.DoubleSummaryStatistics;
@@ -18,8 +19,8 @@ public class StatisticsController {
     private TransactionalService service;
 
     @GetMapping
-    public ResponseEntity<StatisticsResponse> getStatistics() {
-        return ResponseEntity.ok().body(new StatisticsResponse(service.getStatistics()));
+    public ResponseEntity<StatisticsResponse> getStatistics(@RequestParam(name = "time", required = false, defaultValue = "60") Long time) {
+        return ResponseEntity.ok().body(new StatisticsResponse(service.getStatistics(time)));
     }
 
 }

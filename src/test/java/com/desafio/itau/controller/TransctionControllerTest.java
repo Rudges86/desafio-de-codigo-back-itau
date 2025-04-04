@@ -16,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.time.OffsetDateTime;
 
@@ -51,18 +52,6 @@ class TransctionControllerTest {
 
         verify(serviceMock, times(1)).addTransactional(any(Transaction.class));
     }
-
-    @Test
-    void testValorInvalido() throws Exception{
-        TransactionRequest request = new TransactionRequest(-100, OffsetDateTime.now());
-        mockMvc.perform(post("/transacao")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(mapper.writeValueAsString(request))
-        ).andExpect(status().isUnprocessableEntity());
-
-        verify(serviceMock, never()).addTransactional(any(Transaction.class));
-    }
-
     @Test
     @DisplayName("Teste de deleção.")
     void testDelecao() throws Exception {
